@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodFesta - Authentic Bangladeshi Cuisine</title>
+  <meta name="title" content="FoodFesta - Authentic Bangladeshi Cuisine">
+  <meta name="description" content="Experience authentic Bangladeshi flavors in the heart of Chittagong">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23D4A017'/%3E%3Cpath d='M30,40 Q50,25 70,40 Q65,60 50,70 Q35,60 30,40' fill='%23FFF'/%3E%3C/svg%3E" type="image/svg+xml">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* CSS Reset & Variables */
+    :root {
+      --primary-color: #D4A017;
+      --primary-dark: #B8860B;
+      --secondary-color: #8B0000;
+      --dark-bg: #0F0F0F;
+      --medium-bg: #1A1A1A;
+      --light-bg: #2A2A2A;
+      --text-light: #FFFFFF;
+      --text-gray: #CCCCCC;
+      --text-dark: #333333;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      --transition: all 0.4s ease;
+      --border-radius: 10px;
+      --section-padding: 80px 0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      font-size: 62.5%;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.6;
+      color: var(--text-light);
+      background-color: var(--dark-bg);
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    section {
+      padding: var(--section-padding);
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--primary-color);
+      color: var(--text-dark);
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+      z-index: -1;
+    }
+    
+    .btn:hover:before {
+      left: 100%;
+    }
+    
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-light);
+      border: 2px solid var(--primary-color);
+    }
+    
+    .btn-secondary:hover {
+      background-color: var(--primary-color);
+      color: var(--text-dark);
+    }
+    
+    .section-title {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 3px;
+      background-color: var(--primary-color);
+      bottom: -10px;
+      left: 0;
+    }
+    
+    .text-center .section-title:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section-subtitle {
+      color: var(--primary-color);
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .section-text {
+      color: var(--text-gray);
+      margin-bottom: 3rem;
+      max-width: 700px;
+    }
+    
+    .text-center .section-text {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: var(--transition);
+      background-color: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    
+    .header.scrolled {
+      padding: 15px 0;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--text-light);
+    }
+    
+    .logo span {
+      color: var(--primary-color);
+    }
+    
+    .nav-list {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      position: relative;
+      padding: 5px 0;
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      bottom: 0;
+      left: 0;
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-color);
+    }
+    
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 2.4rem;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    
+    .hero-content {
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-title {
+      font-size: 5.5rem;
+      margin-bottom: 2rem;
+      line-height: 1.1;
+    }
+    
+    .hero-text {
+      font-size: 1.8rem;
+      margin-bottom: 3rem;
+      color: var(--text-gray);
+    }
+    
+    .hero-btns {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    /* Features Section */
+    .features {
+      background-color: var(--medium-bg);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .feature-card {
+      background-color: var(--light-bg);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      text-align: center;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-bottom-color: var(--primary-color);
+      box-shadow: var(--shadow);
+    }
+    
+    .feature-icon {
+      font-size: 4rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+    }
+    
+    .feature-title {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .feature-text {
+      color: var(--text-gray);
+    }
+    
+    /* Menu Section */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .menu-card {
+      background-color: var(--light-bg);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    
+    .menu-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+    
+    .menu-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .menu-content {
+      padding: 20px;
+    }
+    
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .menu-title {
+      font-size: 2rem;
+    }
+    
+    .menu-price {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 2rem;
+    }
+    
+    .menu-text {
+      color: var(--text-gray);
+      margin-bottom: 1.5rem;
+    }
+    
+    .menu-tag {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: var(--primary-color);
+      color: var(--text-dark);
+      border-radius: 5px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    
+    /* About Section */
+    .about {
+      background-color: var(--medium-bg);
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+      align-items: center;
+    }
+    
+    .about-text {
+      color: var(--text-gray);
+    }
+    
+    .about-list {
+      margin: 2rem 0;
+    }
+    
+    .about-list li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .about-list i {
+      color: var(--primary-color);
+      margin-right: 10px;
+      font-size: 1.8rem;
+    }
+    
+    .about-img {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      background-color: var(--light-bg);
+    }
+    
+    .testimonial-slider {
+      max-width: 800px;
+      margin: 50px auto 0;
+      position: relative;
+    }
+    
+    .testimonial-slide {
+      background-color: var(--medium-bg);
+      padding: 40px;
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: none;
+    }
+    
+    .testimonial-slide.active {
+      display: block;
+      animation: fadeIn 1s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .testimonial-text {
+      font-size: 1.8rem;
+      font-style: italic;
+      margin-bottom: 2rem;
+      color: var(--text-gray);
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .author-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary-color);
+    }
+    
+    .author-name {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+    
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .slider-btn {
+      background: none;
+      border: none;
+      color: var(--primary-color);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .slider-btn:hover {
+      color: var(--primary-dark);
+    }
+    
+    /* Reservation Section */
+    .reservation {
+      background-color: var(--medium-bg);
+    }
+    
+    .reservation-form {
+      max-width: 800px;
+      margin: 50px auto 0;
+      background-color: var(--light-bg);
+      padding: 40px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+    
+    .form-group {
+      margin-bottom: 2rem;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-gray);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      background-color: var(--dark-bg);
+      border: 1px solid #444;
+      border-radius: var(--border-radius);
+      color: var(--text-light);
+      font-family: 'Poppins', sans-serif;
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+    
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 50px;
+    }
+    
+    .gallery-item {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      position: relative;
+      height: 250px;
+    }
+    
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.1);
+    }
+    
+    /* Contact & Location */
+    .contact {
+      background-color: var(--medium-bg);
+    }
+    
+    .contact-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+      margin-top: 50px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background-color: var(--light-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+    
+    .contact-text h4 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+    
+    .contact-text p {
+      color: var(--text-gray);
+    }
+    
+    .map-container {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 400px;
+    }
+    
+    .map-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: var(--light-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-gray);
+    }
+    
+    .map-placeholder i {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--dark-bg);
+      padding: 60px 0 30px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+    
+    .footer-logo span {
+      color: var(--primary-color);
+    }
+    
+    .footer-text {
+      color: var(--text-gray);
+      margin-bottom: 2rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--light-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    
+    .social-link:hover {
+      background-color: var(--primary-color);
+      color: var(--text-dark);
+      transform: translateY(-5px);
+    }
+    
+    .footer-heading {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-heading:after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background-color: var(--primary-color);
+      bottom: 0;
+      left: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: var(--text-gray);
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-color);
+      padding-left: 5px;
+    }
+    
+    .footer-bottom {
+      padding-top: 30px;
+      border-top: 1px solid #333;
+      text-align: center;
+      color: var(--text-gray);
+      font-size: 1.4rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 4.5rem;
+      }
+      
+      .section-title {
+        font-size: 3rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-list {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark-bg);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+      }
+      
+      .nav-list.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav-list li {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #333;
+      }
+      
+      .nav-toggle {
+        display: block;
+      }
+      
+      .hero-title {
+        font-size: 3.8rem;
+      }
+      
+      .hero-btns {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .section-title {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      section {
+        padding: 60px 0;
+      }
+      
+      .hero-title {
+        font-size: 3.2rem;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .reservation-form {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" class="logo">Food<span>Festa</span></a>
+      
+      <button class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav class="nav">
+        <ul class="nav-list" id="navList">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#menu" class="nav-link">Menu</a></li>
+          <li><a href="#reservation" class="nav-link">Reservation</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <p class="section-subtitle">Welcome to FoodFesta</p>
+        <h1 class="hero-title">Authentic Bangladeshi Flavors in the Heart of Chittagong</h1>
+        <p class="hero-text">Experience the rich culinary heritage of Bangladesh with our carefully crafted dishes made from the freshest local ingredients.</p>
+        <div class="hero-btns">
+          <a href="#menu" class="btn">View Our Menu</a>
+          <a href="#reservation" class="btn btn-secondary">Book a Table</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-subtitle">Why Choose Us</p>
+        <h2 class="section-title">Our Specialities</h2>
+        <p class="section-text">At FoodFesta, we combine traditional recipes with modern culinary techniques to create an unforgettable dining experience.</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <h3 class="feature-title">Authentic Taste</h3>
+          <p class="feature-text">Traditional recipes passed down through generations, preserving authentic Bangladeshi flavors.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3 class="feature-title">Fresh Ingredients</h3>
+          <p class="feature-text">We source the freshest local ingredients daily from Chittagong's best markets.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-user-chef"></i>
+          </div>
+          <h3 class="feature-title">Expert Chefs</h3>
+          <p class="feature-text">Our master chefs bring decades of experience in Bangladeshi and international cuisine.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-wine-glass-alt"></i>
+          </div>
+          <h3 class="feature-title">Fine Dining</h3>
+          <p class="feature-text">Elegant ambiance with traditional Bangladeshi decor for a complete cultural experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-subtitle">Our Selection</p>
+        <h2 class="section-title">Signature Dishes</h2>
+        <p class="section-text">Explore our carefully curated menu featuring the best of Bangladeshi cuisine with a modern twist.</p>
+      </div>
+      
+      <div class="menu-grid">
+        <div class="menu-card">
+          <img src="https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Kacchi Biryani" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-header">
+              <h3 class="menu-title">Kacchi Biryani</h3>
+              <span class="menu-price">৳ 550</span>
+            </div>
+            <span class="menu-tag">Chef's Special</span>
+            <p class="menu-text">Layers of fragrant rice and marinated mutton slow-cooked with traditional spices.</p>
+            <a href="#reservation" class="btn">Order Now</a>
+          </div>
+        </div>
+        
+        <div class="menu-card">
+          <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Hilsa Curry" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-header">
+              <h3 class="menu-title">Hilsa Curry</h3>
+              <span class="menu-price">৳ 850</span>
+            </div>
+            <span class="menu-tag">Seasonal</span>
+            <p class="menu-text">Fresh hilsa fish cooked in mustard gravy with green chilies - a Bengali delicacy.</p>
+            <a href="#reservation" class="btn">Order Now</a>
+          </div>
+        </div>
+        
+        <div class="menu-card">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Beef Rezala" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-header">
+              <h3 class="menu-title">Beef Rezala</h3>
+              <span class="menu-price">৳ 480</span>
+            </div>
+            <span class="menu-tag">Spicy</span>
+            <p class="menu-text">Tender beef cooked in yogurt and cashew gravy with aromatic spices.</p>
+            <a href="#reservation" class="btn">Order Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center" style="margin-top: 50px;">
+        <a href="#" class="btn btn-secondary">View Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <p class="section-subtitle">Our Story</p>
+          <h2 class="section-title">A Decade of Culinary Excellence</h2>
+          <p>Founded in 2013 in the heart of Chittagong, FoodFesta began as a small family restaurant with a vision to share authentic Bangladeshi cuisine with the world.</p>
+          
+          <ul class="about-list">
+            <li><i class="fas fa-check"></i> Over 10 years of serving authentic Bangladeshi cuisine</li>
+            <li><i class="fas fa-check"></i> Recipient of "Best Restaurant in Chittagong" award 2022</li>
+            <li><i class="fas fa-check"></i> Sourcing ingredients from local farmers and fishermen</li>
+            <li><i class="fas fa-check"></i> Traditional cooking methods with modern presentation</li>
+          </ul>
+          
+          <a href="#contact" class="btn" style="margin-top: 20px;">Learn More</a>
+        </div>
+        
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Restaurant Interior">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-subtitle">Testimonials</p>
+        <h2 class="section-title">What Our Guests Say</h2>
+      </div>
+      
+      <div class="testimonial-slider">
+        <div class="testimonial-slide active" id="slide1">
+          <p class="testimonial-text">"The Kacchi Biryani at FoodFesta is the best I've had outside of Dhaka! The flavors are authentic and the ambiance takes you right to the heart of Bangladeshi culture."</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="author-img">
+            <div>
+              <h4 class="author-name">Rafiq Ahmed</h4>
+              <p>Regular Customer</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-slide" id="slide2">
+          <p class="testimonial-text">"As a food critic, I've dined at many Bangladeshi restaurants, but FoodFesta stands out for its attention to detail and commitment to authentic flavors. A must-visit in Chittagong!"</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="author-img">
+            <div>
+              <h4 class="author-name">Tasnim Rahman</h4>
+              <p>Food Critic</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-slide" id="slide3">
+          <p class="testimonial-text">"We hosted our company dinner at FoodFesta and everyone was impressed. The service was impeccable, and the food was exceptional. Highly recommended for business gatherings!"</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Customer" class="author-img">
+            <div>
+              <h4 class="author-name">Javed Karim</h4>
+              <p>Business Executive</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="slider-controls">
+        <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Section -->
+  <section class="reservation" id="reservation">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-subtitle">Reservation</p>
+        <h2 class="section-title">Book Your Table</h2>
+        <p class="section-text">Reserve your table in advance to enjoy an unforgettable dining experience at FoodFesta.</p>
+      </div>
+      
+      <form class="reservation-form" id="bookingForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">Full Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input type="tel" id="phone" class="form-control" placeholder="Enter your phone" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="date">Date</label>
+            <input type="date" id="date" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="time">Time</label>
+            <select id="time" class="form-control" required>
+              <option value="">Select Time</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="13:00">1:00 PM</option>
+              <option value="14:00">2:00 PM</option>
+              <option value="18:00">6:00 PM</option>
+              <option value="19:00">7:00 PM</option>
+              <option value="20:00">8:00 PM</option>
+              <option value="21:00">9:00 PM</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="guests">Number of Guests</label>
+            <select id="guests" class="form-control" required>
+              <option value="">Select Guests</option>
+              <option value="1">1 Person</option>
+              <option value="2">2 People</option>
+              <option value="3">3 People</option>
+              <option value="4">4 People</option>
+              <option value="5">5 People</option>
+              <option value="6">6 People</option>
+              <option value="7">7 People</option>
+              <option value="8">8+ People</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="message">Special Requests</label>
+          <textarea id="message" class="form-control" rows="4" placeholder="Any special requests or dietary restrictions"></textarea>
+        </div>
+        
+        <div class="text-center">
+          <button type="submit" class="btn">Book Now</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-subtitle">Gallery</p>
+        <h2 class="section-title">Our Food & Ambiance</h2>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Food" class="gallery-img">
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1554679665-f5537f187268?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Restaurant" class="gallery-img">
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Food" class="gallery-img">
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Chef" class="gallery-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Location -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-subtitle">Contact Us</p>
+        <h2 class="section-title">Visit FoodFesta</h2>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Our Location</h4>
+              <p>Agrabad Commercial Area, Chittagong 4100, Bangladesh</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Phone Number</h4>
+              <p>+880 31-1234567</p>
+              <p>+880 1712-345678</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Email Address</h4>
+              <p>info@foodfesta.com</p>
+              <p>reservation@foodfesta.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Opening Hours</h4>
+              <p>Sunday - Thursday: 11:00 AM - 11:00 PM</p>
+              <p>Friday - Saturday: 11:00 AM - 12:00 AM</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="map-container">
+          <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt"></i>
+            <h3>Chittagong Location</h3>
+            <p>Agrabad Commercial Area</p>
+            <p>Chittagong, Bangladesh</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <div class="footer-logo">Food<span>Festa</span></div>
+          <p class="footer-text">Experience authentic Bangladeshi cuisine in the heart of Chittagong. Traditional flavors, modern presentation.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-tripadvisor"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#menu">Our Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3 class="footer-heading">Contact Info</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> Agrabad, Chittagong</li>
+            <li><i class="fas fa-phone"></i> +880 31-1234567</li>
+            <li><i class="fas fa-envelope"></i> info@foodfesta.com</li>
+            <li><i class="fas fa-clock"></i> 11:00 AM - 12:00 AM</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2023 FoodFesta. All Rights Reserved. | Designed with passion for authentic Bangladeshi cuisine</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navList = document.getElementById('navList');
+    
+    navToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+      navToggle.querySelector('i').classList.toggle('fa-bars');
+      navToggle.querySelector('i').classList.toggle('fa-times');
+    });
+    
+    // Close mobile menu when clicking a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('active');
+        navToggle.querySelector('i').classList.add('fa-bars');
+        navToggle.querySelector('i').classList.remove('fa-times');
+        
+        // Update active nav link
+        navLinks.forEach(item => item.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+    
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Testimonial Slider
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[index].classList.add('active');
+      currentSlide = index;
+    }
+    
+    prevBtn.addEventListener('click', () => {
+      let newIndex = currentSlide - 1;
+      if (newIndex < 0) newIndex = slides.length - 1;
+      showSlide(newIndex);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      let newIndex = currentSlide + 1;
+      if (newIndex >= slides.length) newIndex = 0;
+      showSlide(newIndex);
+    });
+    
+    // Auto-rotate testimonials
+    setInterval(() => {
+      let newIndex = currentSlide + 1;
+      if (newIndex >= slides.length) newIndex = 0;
+      showSlide(newIndex);
+    }, 5000);
+    
+    // Form submission
+    const bookingForm = document.getElementById('bookingForm');
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('name').value;
+      const date = document.getElementById('date').value;
+      
+      // Show success message
+      alert(`Thank you, ${name}! Your table has been booked for ${date}. We will contact you shortly to confirm.`);
+      
+      // Reset form
+      bookingForm.reset();
+    });
+    
+    // Set minimum date for reservation to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').setAttribute('min', today);
+    
+    // Active nav link on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const scrollPos = window.scrollY + 100;
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+                                                  </html>
